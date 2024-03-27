@@ -63,8 +63,8 @@ class ProfileController extends Controller
         return view ('profile.dashboard');
     }
 
-    // public function index()
-    // {
-    //     return view('products.index');
-    // }
+    public function welcome()
+    {
+        return view('profile.welcome');
+    }
 }
