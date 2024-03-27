@@ -15,11 +15,15 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
