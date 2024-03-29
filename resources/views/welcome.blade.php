@@ -24,11 +24,13 @@
             gap: 20px; /* Vertical gap between buttons */
         }
         h1 {
+            font-family: 'Brush Script MT', cursive;
             font-size: 10em; /* Adjust font size as needed */
             margin-top: 20px; /* Move header text up */
         }
         .btn {
-            width: 200px; /* Set button width */
+            width: 400px; /* Set button width */
+            font-family: 'Brush Script MT', cursive;
         }
     </style>
 </head>
@@ -48,7 +50,7 @@
 
     <!-- Footer -->
     <footer class="fixed-bottom text-center mb-4">
-        <p>2024.be Journal &copy; D.M.O </p>
+        <p>2024.be Journal &copy; Danno.Miura.Okamoto </p>
     </footer>
 
     <!-- Bootstrap JavaScript -->
