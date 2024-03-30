@@ -16,6 +16,7 @@
               <th>title</th>
               <th>Image</th>
               <th>Description</th>
+              <th>Edit</th>
           </tr>
           @foreach($products as $post)
               <tr>
@@ -29,6 +30,9 @@
                       @endif
                   </td>
                   <td>{{ $post->description }}</td>
+                  <td>
+                    <a href="{{ route('post.edit', ['post' => $post]) }}">Edit</a>
+                  </td>
               </tr>
       
           @endforeach

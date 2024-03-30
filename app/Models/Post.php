@@ -11,6 +11,7 @@ use App\Models\posts;
 
 class Post extends Model
 {
+    protected $fillable = ['title'];
     use HasFactory;
     // protected $fillable = [
     //     'comment',

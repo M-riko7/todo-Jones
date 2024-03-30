@@ -35,4 +35,33 @@ class PostController extends Controller
 
         return redirect()->route('product.index'); // 修正: indexへのルート名を指定
     }
+
+    public function edit(Post $post){
+        return view('products.edit',['post' => $post]);
+    }
+
+    // public function update(Post $post, Request $request){
+    //     $data = $request->validate([
+    //         'title' => 'required',
+    //         'img_at' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'description' => 'required'
+    //     ]);
+
+    //     $post->update($data);
+
+    //     return redirect(route('product.edit'))->with('success', 'product Updated Succesffully');
+    // }
+    public function update(Post $post, Request $request){
+        $data = $request->validate([
+            'title' => 'required',
+            'img_at' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required'
+        ]);
+    
+        $post->update($data);
+    
+        return redirect(route('products.edit'))->with('success','Product Updated Succesffully');
+    }
+    
+    
 }
