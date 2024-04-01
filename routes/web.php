@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -16,7 +17,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//編集（edit　2024,3.29）
+//編集（edit 2024,3.29）
 // Route::get('/post{post}/edit', [PostController::class, 'edit'])->name('post.edit');
 Route::get('/products/{post}/edit', [PostController::class, 'edit'])->name('products.edit');
 
@@ -28,6 +29,10 @@ Route::get('/products/{post}/edit', [PostController::class, 'edit'])->name('prod
 // Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 
 Route::get('/index', [PostController::class, 'index'])->name('products.index');
+// Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+// Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search',[SearchController::class, 'index'])->name('products.search');
+
 
 
 Route::middleware('auth')->group(function () {
@@ -43,3 +48,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+?>
