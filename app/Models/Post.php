@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\PostController;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\User;
 use App\Models\posts;
 
@@ -24,5 +25,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
     
 }
+
+
+
+

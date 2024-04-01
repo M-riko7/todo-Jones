@@ -17,20 +17,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//編集（edit 2024,3.29）
-// Route::get('/post{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+
+    Route::get('/products/{post}/edit', [PostController::class, 'edit'])->name('products.edit');
+    Route::post('products/{id}/edit', [ProductController::class, 'store'])->name('product.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+
 Route::get('/products/{post}/edit', [PostController::class, 'edit'])->name('products.edit');
 
-// Route::put('/post{post}/update', [PostController::class, 'update'])->name('post.update');
 
-// createのroute定義↓
-
-// Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-// Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 
 Route::get('/index', [PostController::class, 'index'])->name('products.index');
-// Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-// Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 Route::get('/search',[SearchController::class, 'index'])->name('products.search');
 
 
@@ -48,6 +45,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
 
 ?>
