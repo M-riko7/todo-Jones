@@ -51,9 +51,9 @@
 
 <body>
     <header><span class="be-journal">be Journal</span></header>
-
+    @yield('content')
     <div class="container mt-4">
-        @yield('content')
+        
     </div>
 
     <footer>
@@ -61,6 +61,7 @@
         <a href="#">Messages</a>
         <a href="#">Search</a>
         <a href="#">Profile</a>
+        
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

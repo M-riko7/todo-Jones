@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use FFI;
 
 class PostController extends Controller
 {
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         $request->validate([
             'title' => 'required',
@@ -36,8 +39,35 @@ class PostController extends Controller
         return redirect()->route('product.index'); // 修正: indexへのルート名を指定
     }
 
-    public function edit(Post $post){
-        return view('products.edit',['post' => $post]);
+    // public function edit(Post $post){
+    //     return view('products.edit',['post' => $post]);
+    // }
+
+    public function edit($id){
+            $post = Post::find($id);
+
+            return view('products.edit', ['post' => $post]);
+    } //編集
+
+    public function update(UpdatePostRequest $request, $id)
+    {
+            $post=Post::find($id);
+
+            if($file = $request->image){
+                $fileName = time() . $file->getClientOriginalName();
+                $target_path = public_path('uploads/');
+                $file->move($target_path, $fileName);
+            }else{
+                $fileName = null;
+            }
+        
+            $post->title=$request->input('title');
+            $post->image=$fileName;
+            $post->description=$request->input('description');
+
+            $post->save();
+
+            return redirect('post/index');
     }
 
     // public function update(Post $post, Request $request){
@@ -49,19 +79,19 @@ class PostController extends Controller
 
     //     $post->update($data);
 
-    //     return redirect(route('product.edit'))->with('success', 'product Updated Succesffully');
+    //     return redirect(route('product.edit'))->with('success', 'product Updated Successfully');
     // }
-    public function update(Post $post, Request $request){
-        $data = $request->validate([
-            'title' => 'required',
-            'img_at' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required'
-        ]);
+    // public function update(Post $post, Request $request){
+    //     $data = $request->validate([
+    //         'title' => 'required',
+    //         'img_at' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'description' => 'required'
+    //     ]);
     
-        $post->update($data);
+    //     $post->update($data);
     
-        return redirect(route('products.edit'))->with('success','Product Updated Succesffully');
-    }
+    //     return redirect(route('products.edit'))->with('success','Product Updated Successfully');
+    // }
     
     
 }
