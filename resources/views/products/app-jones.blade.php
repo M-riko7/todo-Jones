@@ -40,6 +40,10 @@
             font-size: 40px;
         }
 
+        body {
+             margin-top: 100px;
+             }
+
         footer a {
             margin-right: 10px;
             text-decoration: none; /* 下線を消す */
@@ -59,7 +63,7 @@
     <footer>
         <a href="#">Home</a>
         <a href="#">Messages</a>
-        <a href="#">Search</a>
+        <a href="{{ route('products.search') }}">Search</a>
         <a href="#">Profile</a>
         
     </footer>
