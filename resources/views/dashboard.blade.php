@@ -20,25 +20,32 @@
             <label for="title">タイトル</label>
             <input type="text" name="title" value="{{ old("title") }}">
         </div>  
+        @error('title')
+        {{ $message }}
+        @enderror
     
         <div>
             <label for="image" accept="image/png,image/jpeg,image/jpg">ファイルを選択</label>
             <input type="file" name="img_at" value="{{ old("img_at") }}">
         </div>
+        @error('image')
+        {{ $message }}
+        @enderror
     
         <div>
             <label for="description">詳細</label>
             <textarea name="description" id="" rows="5">{{ old('description') }}</textarea>
         </div>
-    
+        @error('description')
+        {{ $message }}
+        @enderror
+        <div>
         <button type="submit">保存</button>
-    
+        </div>
     </form> 
     
-    
-    
     </body>
-    </html>
+    {{-- </html>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -47,5 +54,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </x-app-layout>
