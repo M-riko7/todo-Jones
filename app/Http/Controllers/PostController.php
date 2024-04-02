@@ -46,6 +46,9 @@ class PostController extends Controller
             return view('products.edit', ['post' => $post]);
     } //編集
 
+   
+    
+
     public function update(UpdatePostRequest $request, $id)
     {
             $post=Post::find($id);

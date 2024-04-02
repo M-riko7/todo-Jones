@@ -24,6 +24,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/products/{post}/edit', [PostController::class, 'edit'])->name('products.edit');
 
+//削除
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
 
 
 Route::get('/index', [PostController::class, 'index'])->name('products.index');
