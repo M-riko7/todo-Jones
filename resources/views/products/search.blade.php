@@ -49,7 +49,6 @@
         <p>{{ $item->name }}</p>
     @endforeach
 @endif --}}
-
 {{-- @if(isset($user))
     @foreach ($user as $item)
         <p>{{ $item->name }}</p>
