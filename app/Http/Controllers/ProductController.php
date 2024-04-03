@@ -88,7 +88,15 @@ public function store(StorePostRequest $request)
         return redirect()->route('product.index');
     }
 
-
+    public function destroy($id)
+    {
+        // テーブルから指定のIDのレコード1件を取得
+        $post = Post::find($id);
+        // レコードを削除
+        $post->delete();
+        // 削除したら一覧画面にリダイレクト
+        return redirect()->route('product.index');
+    }
 
 
     // public function create(){

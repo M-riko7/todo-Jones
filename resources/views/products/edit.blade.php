@@ -14,7 +14,6 @@ img {
 </style>
 
 <body class="background">
-    <h1>編集</h1>
 <form method="POST" action="{{ route('products.edit', ['post' => $post->id]) }}" enctype="multipart/form-data">
     @csrf
     <div>
