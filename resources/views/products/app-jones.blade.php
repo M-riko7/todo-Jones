@@ -59,6 +59,7 @@
 
 <body>
 
+
     <header><span class="be-journal">be Journal</span></header>
 
     <div class="container mt-4"> 
