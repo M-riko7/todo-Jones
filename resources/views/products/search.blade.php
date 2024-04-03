@@ -60,3 +60,4 @@
     <p>{{ $message1 }}</p>
 @endif
 
+@endsection
