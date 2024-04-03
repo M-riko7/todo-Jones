@@ -1,12 +1,17 @@
 @extends('products.app-jones')
 @section('content')
+
 <head>
-<link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
+
 <style>
+    .main_body{
+        background-color: black;
+    }
+    .new_title{
+        color: #f7f7f7;
+    }
                 
         /* カード */
         .card {
@@ -141,18 +146,21 @@
 
 </style>
 
-
-    <h1> New post</h1>
+<body class="main_body">
+    
+    <h1 class="new_title"> Welcome</h1>
 
     <div class="card-container">
         @foreach($products as $post)
-        <div class="card">
-            <img src="{{ asset('uploads/' . $post->img_at) }}" class="card-img-top" alt="Post Image">
+            <div class="card">
+                <img src="{{ asset('uploads/' . $post->img_at) }}" class="card-img-top" alt="Post Image">
             
-            <div class="card-body d-flex flex-column"> <!-- d-flex と flex-column でフレックスコンテナを作成 -->
+                <div class="card-body d-flex flex-column"> <!-- d-flex と flex-column でフレックスコンテナを作成 -->
                 <h1 class="card-title">{{ $post->title }}</h1>
                 <p class="card-text">{{ $post->description }}</p>
                 @if($post->user_id == Auth::id())
+                
+                
                 <!-- Edit Button -->
                 <div class="d-flex justify-content-end"> <!-- justify-content-end で要素を右側に配置 -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->id }}">
@@ -213,14 +221,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteConfirmationLabel">投稿削除の確認</h5>
+                <h5 class="modal-title" id="deleteConfirmationLabel">Confirm Delate</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>この投稿を削除してもよろしいですか？</p>
+                <p>Are you sure to delate?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ri-close-line"></i> キャンセル</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ri-close-line"></i> Cancell</button>
                 <form action="{{ route('products.destroy', $post->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -234,6 +242,11 @@
         @endforeach
     </div>
 
+</body>
+{{-- @endsection --}}
+
+
 @endsection
+
 
 

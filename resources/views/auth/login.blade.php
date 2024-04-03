@@ -4,6 +4,9 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <head>
+            <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        </head>
 
         <!-- Email Address -->
         <div>
