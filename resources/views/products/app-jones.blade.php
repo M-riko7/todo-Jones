@@ -21,8 +21,6 @@
             padding: 10px;
             background-color: #000000;
             position: static;
-            top: 0;
-            left: 0;
             width: 100%;
             z-index: 1000;
         }
@@ -31,11 +29,11 @@
             text-align: center;
             padding: 20px 0;
             background-color: #000000;
-            position: fixed;
+            position: fixed; /* 固定を維持 */
             bottom: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 10000;
             display: flex;
             justify-content: space-around; /* リンクを等間隔に配置 */
         }
@@ -62,17 +60,16 @@
 <body>
 
 
-
-
     <header><span class="be-journal">be Journal</span></header>
-    @yield('content')
-    <div class="container mt-4">
-        
+
+    <div class="container mt-4"> 
     </div>
+
+    @yield('content')
 
     <footer>
         <a href="{{ route('dashboard') }}"><i class="ri-home-8-line"></i></a>
-        <a href="#"><i class="ri-chat-1-line"></i></a>
+        {{-- <a href="{{ route('post.index') }}"><i class="ri-chat-1-line"></i></a> --}}
         <a href="{{ route('products.search') }}"><i class="ri-search-line"></i></a>
         <a href="#"><i class="ri-profile-line"></i></a>
         

@@ -233,7 +233,7 @@
 
         @endforeach
     </div>
-    
+
 @endsection
 
 
