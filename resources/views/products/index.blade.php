@@ -7,33 +7,36 @@
 />
 </head>
 <style>
+                
         /* カード */
-    .card {
-        width: 100%;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-bottom: 20px;
-    }
+        .card {
+            width: calc(100% - 40px); /* 画面幅から左右の余白分を引く */
+            margin: 20px auto; /* 上下のマージンを追加して画面中央に配置 */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-    .card img {
-        width: 100%;
-        height: auto;
-    }
+        .card img {
+            max-width: 100%; /* 画像をカードの幅に収める */
+            height: auto;
+            display: block; /* 画像を中央に配置するためにブロック要素にする */
+            margin: 0 auto; /* 画像を水平方向に中央配置 */
+        }
 
-    .card-body {
-        padding: 20px;
-    }
+        .card-body {
+            padding: 20px;
+        }
 
-    .card-title {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-    }
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
 
-    .card-text {
-        font-size: 1rem;
-        color: #666;
-    }
+        .card-text {
+            font-size: 1rem;
+            color: #666;
+        }
 
     /* モーダル */
     .modal-content {
@@ -71,13 +74,15 @@
         }
 
         .modal-header {
-            background-color: black; /* ヘッダーの背景色 */
+
+            background-color: #666; /* ヘッダーの背景色 */
+
             color: #fff; /* ヘッダーテキストの色 */
             border-radius: 20px 20px 0 0; /* ヘッダーの角を丸くする */
         }
 
         .modal-title {
-            font-size: 1.5rem; /* タイトルのフォントサイズ */
+            font-size: 100px; /* タイトルのフォントサイズ */
         }
 
         .modal-body {
@@ -88,6 +93,11 @@
             background-color: #f7f7f7; /* フッターの背景色 */
             border-radius: 0 0 20px 20px; /* フッターの角を丸くする */
         }
+
+        .modal-header .btn-close {
+            color: #fff !important;
+        }
+
 
         /* フォームのスタイル */
         form {
@@ -123,29 +133,39 @@
             margin-right: 10px; /* ボタンの右マージン */
         }
 
+            /* ボタンのスタイル */
+        .btn.btn-primary {
+            background-color: black !important; /* ボタンの背景色を黒色に設定 */
+            color: white !important; /* ボタンのテキスト色を白色に設定 */
+        }
+
 </style>
 
 
-    <h1>新規登録</h1>
+    <h1> New post</h1>
 
     <div class="card-container">
         @foreach($products as $post)
-            <div class="card">
-                <img src="{{ asset('uploads/' . $post->img_at) }}" class="card-img-top" alt="Post Image">
-                
-                <div class="card-body">
-                    <h5 class="card-title">{{ $post->title }}</h5>
-                    <p class="card-text">{{ $post->description }}</p>
-                    @if($post->user_id == Auth::id())
-                    {{-- Edit Button --}}
+        <div class="card">
+            <img src="{{ asset('uploads/' . $post->img_at) }}" class="card-img-top" alt="Post Image">
+            
+            <div class="card-body d-flex flex-column"> <!-- d-flex と flex-column でフレックスコンテナを作成 -->
+                <h1 class="card-title">{{ $post->title }}</h1>
+                <p class="card-text">{{ $post->description }}</p>
+                @if($post->user_id == Auth::id())
+                <!-- Edit Button -->
+                <div class="d-flex justify-content-end"> <!-- justify-content-end で要素を右側に配置 -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->id }}">
-                        Edit Product
+                        Edit
                     </button>
-                    @endif
                 </div>
+                @endif
             </div>
+        </div>
+
 
             {{--Edit Modal --}}
+
 <div class="modal fade" id="editModal{{ $post->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -165,6 +185,7 @@
                         <label for="image" class="form-label"></label>
                         <img src="{{ asset('uploads/' . $post->img_at) }}" alt="" class="img-fluid mb-2">
                         <input type="file" name="image" class="form-control">
+
                     </div>
                     @error('image')
                         <div class="alert alert-danger">{{ $message }}</div>
