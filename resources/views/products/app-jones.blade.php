@@ -20,7 +20,7 @@
             text-align: left;
             padding: 10px;
             background-color: #000000;
-            position: fixed;
+            position: static;
             top: 0;
             left: 0;
             width: 100%;
@@ -47,7 +47,6 @@
         }
 
         body {
-             margin-top: 100px;
              margin-bottom: 100px;
              }
 
@@ -62,17 +61,6 @@
 
 <body>
 
-    {{-- @include('components.application-logo', ['attributes' => ['class' => 'icon-class']])
-
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {!! $attributes->merge(['class' => 'icon-class'])->map(function ($value, $key) { return $key.'="'.$value.'"'; })->implode(' ') !!}>
-        <!-- Jの上部の水平な部分 -->
-        <path d="M10,20 H40" stroke="black" stroke-width="2"/>
-        <!-- Jの縦の部分 -->
-        <path d="M25,20 V80" stroke="black" stroke-width="2"/>
-        <!-- Jの下部の曲線 -->
-        <path d="M25,80 Q30,90 40,80" stroke="black" stroke-width="2"/>
-    </svg> --}}
-    
 
 
 
@@ -83,7 +71,7 @@
     </div>
 
     <footer>
-        <a href="#"><i class="ri-home-8-line"></i></a>
+        <a href="{{ route('dashboard') }}"><i class="ri-home-8-line"></i></a>
         <a href="#"><i class="ri-chat-1-line"></i></a>
         <a href="{{ route('products.search') }}"><i class="ri-search-line"></i></a>
         <a href="#"><i class="ri-profile-line"></i></a>
