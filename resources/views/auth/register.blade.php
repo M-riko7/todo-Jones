@@ -1,6 +1,9 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
+        <head>
+            <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        </head>
 
         <!-- Name -->
         <div>
