@@ -84,7 +84,7 @@
 </body>
 @endsection
 
-<form action="{{ route('products.search') }}" method="GET">
+{{-- <form action="{{ route('products.search') }}" method="GET">
     @csrf
     <input type="text" name="name" placeholder="名前を入力">
     <button type="submit">検索</button>
@@ -117,7 +117,7 @@
 
 @if (isset($message1))
     <p>{{ $message1 }}</p>
-@endif
+@endif --}}
 
-@endsection
+{{-- @endsection --}}
 
